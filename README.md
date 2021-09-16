@@ -3,7 +3,7 @@
 
 ## Instalasi Database
 
-Run command php artisan migrate
+php artisan migrate
 
 ![Untitled](https://user-images.githubusercontent.com/61740978/133418616-d976ca24-222d-403e-a49c-27f179a8d552.png)
 
