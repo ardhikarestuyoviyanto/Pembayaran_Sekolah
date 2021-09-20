@@ -11,7 +11,9 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "nwidart/laravel-modules": "^8.2"
+        "midtrans/midtrans-php": "^2.5",
+        "nwidart/laravel-modules": "^8.2",
+        "veritrans/veritrans-php": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

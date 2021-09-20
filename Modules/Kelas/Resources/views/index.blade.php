@@ -28,21 +28,18 @@
                 <div class="card">
                     <div class="card-header">
                         Data Kelas
+                        <a style="float:right;" href="{{ url('admin/modulsiswa/kelas/create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
                     </div>
                     <div class="card-body">
                         {{-- NULIS KONTEN VIEW DISINI --}}
-                        <form action="" method="post">
-                            <a href="{{ url('admin/modulsiswa/kelas/create') }}" class="btn btn-primary mb-4">Tambah Data
-                                Kelas</a>
-                        </form>
 
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="97%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width:10px;">No</th>
                                         <th>Kelas</th>
-                                        <th>Aksi</th>
+                                        <th style="width:100px;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,14 +50,13 @@
                                             <td>{{ $k->nama_kelas }}</td>
                                             <td>
                                                 <a href="{{ url('admin/modulsiswa/kelas/' . $k->id_kelas . '/edit') }}"
-                                                    class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    class="btn btn-warning btn-sm">Edit</a>
                                                 <form action="{{ url('admin/modulsiswa/kelas/' . $k->id_kelas) }}"
                                                     method="POST" class="d-inline">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger"
-                                                        onclick="return confirm('Apakah anda yakin ?')"><i
-                                                            class="fas fa-trash-alt"></i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Apakah anda yakin ?')">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>

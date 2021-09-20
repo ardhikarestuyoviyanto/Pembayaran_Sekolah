@@ -28,18 +28,16 @@
                 <div class="card">
                     <div class="card-header">
                         Data Siswa
+                        <a style="float: right;" href="{{ url('admin/modulsiswa/siswa/create') }}" class="btn btn-primary btn-sm">Tambah</a>
                     </div>
                     <div class="card-body">
                         {{-- NULIS KONTEN VIEW DISINI --}}
-                        <form action="" method="post">
-                            <a href="{{ url('admin/modulsiswa/siswa/create') }}" class="btn btn-primary mb-4">Tambah Data
-                                siswa</a>
-                        </form>
 
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="97%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th style="width:30px;">No</th>
                                         <th>Nis</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>
@@ -48,20 +46,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($siswa as $s)
+                                   @php $i=1; @endphp @foreach ($siswa as $s)
                                         <tr>
+                                            <td>{{$i++}}</td>
                                             <td>{{ $s->nis }}</td>
                                             <td>{{ $s->nama_siswa }}</td>
                                             <td>{{ $s->nama_kelas }}</td>
                                             <td>{{ $s->alamat }}</td>
                                             <td>
                                                 <a href="{{ url('admin/modulsiswa/siswa/' . $s->id_siswa . '/edit') }}"
-                                                    class="btn btn-warning">Edit</a>
+                                                    class="btn btn-warning btn-sm">Edit</a>
                                                 <form action="{{ url('admin/modulsiswa/siswa/' . $s->id_siswa) }}"
                                                     method="POST" class="d-inline">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger"
+                                                    <button type="submit" class="btn btn-danger btn-sm"
                                                         onclick="return confirm('Apakah anda yakin ?')">Delete</button>
                                                 </form>
                                             </td>
@@ -80,7 +79,9 @@
 
     <script>
           $(document).ready(function() {
-            $('#dataTable').DataTable({});
+            $('#dataTable').DataTable({
+                responsive: true,
+            });
         });ss
     </script>
 

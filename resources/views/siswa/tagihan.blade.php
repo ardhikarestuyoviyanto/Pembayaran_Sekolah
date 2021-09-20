@@ -86,7 +86,7 @@
                     <td>{{"Rp " . number_format($x->nominal ,2,',','.')}}</td>
                     <td>
                         @if($x->status=='N')
-                            <a href="#" class="btn btn-primary btn-xs" role="button">Bayar Sekarang</a>
+                            <a href="#" class="btn btn-primary btn-xs bayar" data-id="{{$x->id_tagihan}}" data-toggle="tooltip" title="Bayar Sekarang" role="button">Bayar Sekarang</a>
                         @else
                             <a href="#" class="btn btn-primary btn-xs disabled" role="button" aria-disabled="true">Sudah Bayar</a>
                         @endif
@@ -111,11 +111,52 @@
   </section>
 </div>
 
-
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-Z09718zxwsc3mnhu"></script>
 <script>
 $(document).ready(function(){
     //-----------------------------------------------------
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
+    //--------------------------------------------------------
+    $('.bayar').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "{{url('siswa/pay')}}",
+            type: "POST",
+            data: {'id_tagihan': $(this).data('id'), "_token": "{{ csrf_token() }}"},
+            success: function(data){
+                
+                snap.pay(data.snap_token, {
+                    onSuccess: function(result){
+
+                    },
+                    onPending: function(result){
+                        
+                        $.ajax({
+                            url: "{{url('siswa/updatetagihan')}}",
+                            type: "POST",
+                            data: {'id_tagihan': result.order_id, '_token': '{{ csrf_token() }}', 'tgl_bayar': result.transaction_time, 'payment_type':result.payment_type},
+                            success: function(data){
+                                swal(data.message)
+                                .then((result) => {
+                                    location.reload(); 
+                                });
+                            }
+                        });
+
+                    },
+                    onError: function(result){
+                       console.log('Error : '+JSON.stringify(result, null, 2));
+                    }
+                });
+
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+
+
 });
 
 </script>

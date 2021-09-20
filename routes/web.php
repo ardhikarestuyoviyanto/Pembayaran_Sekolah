@@ -64,5 +64,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('siswa')->group(function () {
     
     Route::get('dashboard', [Siswa::class, 'dashboard'])->middleware('usersession');
+    Route::post('pay', [Siswa::class, 'pay'])->middleware('usersession');
+    Route::post('updatetagihan', [Siswa::class, 'updatetagihan'])->middleware('usersession');
     
 });
