@@ -53,15 +53,6 @@
               </div>
             </div>
           </div>
-
-            <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="Berapa hasil diatas" name="captcha" required>
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                    <span class="fas fa-robot"></span>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-8">
                     

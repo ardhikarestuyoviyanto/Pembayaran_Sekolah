@@ -52,7 +52,7 @@ class SiswaController extends Controller
         $siswa->nis = $request->nis;
         $siswa->nama_siswa = $request->nama_siswa;
         $siswa->alamat = $request->alamat;
-        $siswa->password = $request->password;
+        $siswa->password = password_hash($request->password, PASSWORD_DEFAULT);
         $siswa->save();
 
         return redirect('admin/modulsiswa/siswa')->with(['sidebar' => 'Tambah Data Siswa', 'pesan' => 'Data berhasil disimpan']);
@@ -97,7 +97,7 @@ class SiswaController extends Controller
         $siswa->nis = $request->nis;
         $siswa->nama_siswa = $request->nama_siswa;
         $siswa->alamat = $request->alamat;
-        $siswa->password = $request->password;
+        $siswa->password = password_hash($request->password, PASSWORD_DEFAULT);
         $siswa->save();
 
         return redirect('admin/modulsiswa/siswa')->with(['sidebar' => 'Edit Data siswa', 'pesan' => 'Data siswa berhasil diubah']);
