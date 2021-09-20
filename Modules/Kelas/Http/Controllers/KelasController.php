@@ -29,7 +29,7 @@ class KelasController extends Controller
     public function create()
     {
         $kelas = new Kelas;
-        return view('kelas::create')->with(['sidebar' => 'Tambah Data Kelas']);
+        return view('kelas::create')->with(['sidebar' => 'Data Kelas']);
     }
 
     /**
@@ -43,7 +43,7 @@ class KelasController extends Controller
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->save();
 
-        return redirect('admin/modulsiswa/kelas')->with(['sidebar' => 'Tambah Data Kelas', 'pesan' => 'Data berhasil disimpan']);
+        return redirect('admin/modulsiswa/kelas')->with(['sidebar' => 'Data Kelas', 'pesan' => 'Data berhasil disimpan']);
     }
 
     /**
@@ -67,7 +67,7 @@ class KelasController extends Controller
         $data = [
             'kelas' => $kelas
         ];
-        return view('kelas::edit', $data)->with(['sidebar' => 'Edit Data Kelas']);
+        return view('kelas::edit', $data)->with(['sidebar' => 'Data Kelas']);
     }
 
     /**
@@ -81,7 +81,7 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->save();
-        return redirect('admin/modulsiswa/kelas')->with(['sidebar' => 'Edit Data Kelas', 'pesan' => 'Data berhasil diubah']);
+        return redirect('admin/modulsiswa/kelas')->with(['sidebar' => 'Data Kelas', 'pesan' => 'Data berhasil diubah']);
     }
 
     /**

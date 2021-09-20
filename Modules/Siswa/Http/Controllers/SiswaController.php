@@ -22,7 +22,7 @@ class SiswaController extends Controller
         $data = [
             'siswa' => $siswa
         ];
-        return view('siswa::index', $data)->with(['sidebar' => 'siswa']);
+        return view('siswa::index', $data)->with(['sidebar' => 'Data Siswa']);
     }
 
     /**
@@ -37,7 +37,7 @@ class SiswaController extends Controller
             'siswa' => $siswa,
             'kelas' => $kelas
         ];
-        return view('siswa::create', $data)->with(['sidebar' => 'siswa']);
+        return view('siswa::create', $data)->with(['sidebar' => 'Data Siswa']);
     }
 
     /**
@@ -81,7 +81,7 @@ class SiswaController extends Controller
             'siswa' => $siswa,
             'kelas' => $kelas
         ];
-        return view('siswa::edit', $data)->with(['sidebar' => 'siswa']);
+        return view('siswa::edit', $data)->with(['sidebar' => 'Data Siswa']);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ModulTagihan;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
     Route::prefix('modultagihan')->group(function () {
-        Route::resource('pembayaran', PembayaranController::class);
+        
+        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran']);
+
     });
 });
