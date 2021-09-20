@@ -22,42 +22,47 @@ use App\Http\Controllers\Siswa;
 //router halaman login
 Route::get('/', [Auth::class, 'index']);
 
+Route::prefix('auth')->group(function () {
+    Route::post('proseslogin', [Auth::class, 'proseslogin']);
+    Route::get('logout', [Auth::class, 'logout']);
+});
 
 //router group halaman admin
 Route::prefix('admin')->group(function () {
 
-    Route::get('dashboard', [Dashboard::class, 'index']);
+    Route::get('dashboard', [Dashboard::class, 'index'])->middleware('usersession');
 
     Route::prefix('modulsiswa')->group(function () {
     });
 
     Route::prefix('modultagihan')->group(function () {
         
-        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran']);
-        Route::post('insertpembayaran', [ModulTagihan::class, 'insertpembayaran']);
-        Route::post('getpembayaranbyid', [ModulTagihan::class, 'getpembayaranbyid']);
-        Route::post('updatepembayaran', [ModulTagihan::class, 'updatepembayaran']);
-        Route::post('deletepembayaran', [ModulTagihan::class, 'deletepembayaran']);
+        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran'])->middleware('usersession');
+        Route::post('insertpembayaran', [ModulTagihan::class, 'insertpembayaran'])->middleware('usersession');
+        Route::post('getpembayaranbyid', [ModulTagihan::class, 'getpembayaranbyid'])->middleware('usersession');
+        Route::post('updatepembayaran', [ModulTagihan::class, 'updatepembayaran'])->middleware('usersession');
+        Route::post('deletepembayaran', [ModulTagihan::class, 'deletepembayaran'])->middleware('usersession');
         //-----------------------------------------------------------------------------
-        Route::get('setting/{id}', [ModulTagihan::class, 'setting']);
-        Route::get('add/{id}', [ModulTagihan::class, 'addtagihan']);
-        Route::post('inserttagihan', [ModulTagihan::class, 'inserttagihan']);
-        Route::post('deletetagihan', [ModulTagihan::class, 'deletetagihan']);
+        Route::get('setting/{id}', [ModulTagihan::class, 'setting'])->middleware('usersession');
+        Route::get('add/{id}', [ModulTagihan::class, 'addtagihan'])->middleware('usersession');
+        Route::post('inserttagihan', [ModulTagihan::class, 'inserttagihan'])->middleware('usersession');
+        Route::post('deletetagihan', [ModulTagihan::class, 'deletetagihan'])->middleware('usersession');
         //----------------------------------------------------------------------------
 
-        Route::get('datatagihan', [ModulTagihan::class, 'datatagihan']);
-        Route::get('detailtagihan/{id}', [ModulTagihan::class, 'detailtagihan']);
+        Route::get('datatagihan', [ModulTagihan::class, 'datatagihan'])->middleware('usersession');
+        Route::get('detailtagihan/{id}', [ModulTagihan::class, 'detailtagihan'])->middleware('usersession');
 
     });
 
-    Route::get('setting', [Setting::class, 'index']);
-    Route::post('setting/updateadmin', [Setting::class, 'updateadmin']);
-    Route::post('setting/updatemidtrans', [Setting::class, 'updatemidtrans']);
+    Route::get('setting', [Setting::class, 'index'])->middleware('usersession');
+    Route::post('setting/updateadmin', [Setting::class, 'updateadmin'])->middleware('usersession');
+    Route::post('setting/updatemidtrans', [Setting::class, 'updatemidtrans'])->middleware('usersession');
 
 });
 
 //router group halaman siswa
 Route::prefix('siswa')->group(function () {
     
+    Route::get('dashboard', [Siswa::class, 'dashboard'])->middleware('usersession');
     
 });

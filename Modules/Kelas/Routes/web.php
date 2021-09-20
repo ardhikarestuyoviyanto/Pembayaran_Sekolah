@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
     Route::prefix('modulsiswa')->group(function () {
-        Route::resource('kelas', KelasController::class);
+        Route::resource('kelas', KelasController::class)->middleware('usersession');;
     });
 });

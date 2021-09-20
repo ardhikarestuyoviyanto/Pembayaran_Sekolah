@@ -18,7 +18,7 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('modultagihan')->group(function () {
         
-        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran']);
+        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran'])->middleware('usersession');
 
     });
 });

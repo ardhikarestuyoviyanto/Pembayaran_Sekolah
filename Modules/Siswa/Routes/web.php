@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
     Route::prefix('modulsiswa')->group(function () {
-        Route::resource('siswa', SiswaController::class);
+        Route::resource('siswa', SiswaController::class)->middleware('usersession');;
     });
 });
