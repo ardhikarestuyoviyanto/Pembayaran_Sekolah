@@ -67,7 +67,7 @@
                 </li>
     
 
-                @if($sidebar == "Data Pembayaran" || $sidebar == "Setting Tagihan" || $sidebar == "Data Tagihan")
+                @if($sidebar == "Data Pembayaran" || $sidebar == "Data Tagihan")
                 <li class="nav-item menu-open"> 
                     <a href="#" class="nav-link active">
                 @else
@@ -89,17 +89,6 @@
                             @endif
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pembayaran</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            @if($sidebar == "Setting Tagihan")
-                                <a href="{{url('admin/modultagihan/settingtagihan')}}" class="nav-link active">
-                            @else 
-                                <a href="{{url('admin/modultagihan/settingtagihan')}}" class="nav-link">
-                            @endif
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Setting Tagihan</p>
                             </a>
                         </li>
 

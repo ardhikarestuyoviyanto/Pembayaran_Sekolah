@@ -37,13 +37,26 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('modultagihan')->group(function () {
         
+        Route::get('pembayaran', [ModulTagihan::class, 'pembayaran']);
+        Route::post('insertpembayaran', [ModulTagihan::class, 'insertpembayaran']);
+        Route::post('getpembayaranbyid', [ModulTagihan::class, 'getpembayaranbyid']);
+        Route::post('updatepembayaran', [ModulTagihan::class, 'updatepembayaran']);
+        Route::post('deletepembayaran', [ModulTagihan::class, 'deletepembayaran']);
+        //-----------------------------------------------------------------------------
+        Route::get('setting/{id}', [ModulTagihan::class, 'setting']);
+        Route::get('add/{id}', [ModulTagihan::class, 'addtagihan']);
+        Route::post('inserttagihan', [ModulTagihan::class, 'inserttagihan']);
+        Route::post('deletetagihan', [ModulTagihan::class, 'deletetagihan']);
+        //----------------------------------------------------------------------------
+
+        Route::get('datatagihan', [ModulTagihan::class, 'datatagihan']);
+        Route::get('detailtagihan/{id}', [ModulTagihan::class, 'detailtagihan']);
 
     });
 
-    Route::prefix('setting')->group(function () {
-        
-
-    });
+    Route::get('setting', [Setting::class, 'index']);
+    Route::post('setting/updateadmin', [Setting::class, 'updateadmin']);
+    Route::post('setting/updatemidtrans', [Setting::class, 'updatemidtrans']);
 
 });
 
